@@ -1,5 +1,6 @@
 <?php namespace Vinelab\Editor;
 
+use Blade;
 use Illuminate\Support\ServiceProvider;
 
 class EditorServiceProvider extends ServiceProvider {
@@ -18,7 +19,7 @@ class EditorServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('vinelab/editor');
+		$this->package('vinelab/editor', 'vinelab.editor');
 	}
 
 	/**
@@ -28,7 +29,13 @@ class EditorServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		// Setup the facade alias
+        $this->app->booting(function () {
+            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+            $loader->alias('Editor', 'Vinelab\Editor\Facade\Editor');
+        });
+
+        $this->app->singleton('vinelab.editor', 'Vinelab\Editor\Editor');
 	}
 
 	/**
