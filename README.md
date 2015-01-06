@@ -90,7 +90,7 @@ $json = $content->toJson();
         "facebook": [
             {
                 "url": "https://www.facebook.com/FacebookDevelopers/posts/10151471074398553",
-                "html": "<div class="fb-post" data-href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553" data-width="500"></div>",
+                "html": "<div class=\"fb-post\" data-href=\"https://www.facebook.com/FacebookDevelopers/posts/10151471074398553\" data-width=\"500\"></div>",
                 "line": 1
             },
             {
@@ -100,16 +100,16 @@ $json = $content->toJson();
             }
         ],
         "twitter": [
-            "tweet": "<p>Sunsets don't get much better than this one over <a href="https://twitter.com/GrandTetonNPS">@GrandTetonNPS</a>. <a href="https://twitter.com/hashtag/nature?src=hash">#nature</a> <a href="https://twitter.com/hashtag/sunset?src=hash">#sunset</a> <a href="http://t.co/YuKy2rcjyU">pic.twitter.com/YuKy2rcjyU</a></p>— US Dept of Interior (@Interior) <a href="https://twitter.com/Interior/status/463440424141459456">May 5, 2014</a>",
+            "tweet": "<p>Sunsets don't get much better than this one over <a href=\"https://twitter.com/GrandTetonNPS\">@GrandTetonNPS</a>. <a href=\"https://twitter.com/hashtag/nature?src=hash\">#nature</a> <a href=\"https://twitter.com/hashtag/sunset?src=hash\">#sunset</a> <a href=\"http://t.co/YuKy2rcjyU\">pic.twitter.com/YuKy2rcjyU</a></p>— US Dept of Interior (@Interior) <a href=\"https://twitter.com/Interior/status/463440424141459456\">May 5, 2014</a>",
             "lang": "en",
-            "html": "<blockquote class="twitter-tweet" lang="en"><p>Sunsets don&#39;t get much better than this one over <a href="https://twitter.com/GrandTetonNPS">@GrandTetonNPS</a>. <a href="https://twitter.com/hashtag/nature?src=hash">#nature</a> <a href="https://twitter.com/hashtag/sunset?src=hash">#sunset</a> <a href="http://t.co/YuKy2rcjyU">pic.twitter.com/YuKy2rcjyU</a></p>&mdash; US Dept of Interior (@Interior) <a href="https://twitter.com/Interior/status/463440424141459456">May 5, 2014</a></blockquote>",
+            "html": "<blockquote class=\"twitter-tweet\" lang=\"en\"><p>Sunsets don&#39;t get much better than this one over <a href=\"https://twitter.com/GrandTetonNPS\">@GrandTetonNPS</a>. <a href=\"https://twitter.com/hashtag/nature?src=hash\">#nature</a> <a href=\"https://twitter.com/hashtag/sunset?src=hash\">#sunset</a> <a href=\"http://t.co/YuKy2rcjyU\">pic.twitter.com/YuKy2rcjyU</a></p>&mdash; US Dept of Interior (@Interior) <a href=\"https://twitter.com/Interior/status/463440424141459456\">May 5, 2014</a></blockquote>",
             "line": 5
         ],
         "youtube": [
             {
                 "id": "sOOebk_dKFo",
                 "url": "https://www.youtube.com/embed/sOOebk_dKFo",
-                "html": "<iframe width="560" height="315" src="//www.youtube.com/embed/sOOebk_dKFo" frameborder="0" allowfullscreen></iframe>",
+                "html": "<iframe width=\"560\" height=\"315\" src=\"//www.youtube.com/embed/sOOebk_dKFo\" frameborder=\"0\" allowfullscreen></iframe>",
                 "line": 7
             }
         ],
@@ -117,7 +117,7 @@ $json = $content->toJson();
             {
                 "url": "http://dylan.town",
                 "text": "Oxford Town",
-                "html": "<a href="http://dylan.town">Oxford Town</a>",
+                "html": "<a href=\"http://dylan.town\">Oxford Town</a>",
                 "indices": [0, 11]
             }
         ]
