@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="/packages/vinelab/editor/css/bootstrap-markdown.min.css">
+<link rel="stylesheet" href="/packages/vinelab/laravel-editor/css/bootstrap-markdown.min.css">
 
 <textarea name="vinelab-editor-text" id="vinelab-editor-textarea" rows="10"></textarea>
 
-<script type="text/javascript" src="/packages/vinelab/editor/js/bootstrap-markdown.js"></script>
-<script type="text/javascript" src="/packages/vinelab/editor/js/markdown.min.js"></script>
+<script type="text/javascript" src="/packages/vinelab/laravel-editor/js/bootstrap-markdown.js"></script>
+<script type="text/javascript" src="/packages/vinelab/laravel-editor/js/markdown.min.js"></script>
 <script type="text/javascript">
 $(function(){
 
