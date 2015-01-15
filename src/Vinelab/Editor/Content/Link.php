@@ -15,11 +15,11 @@ class Link extends AbstractContent {
         $line = $embed['line'];
 
         return [
-            'url' => $url,
-            'text' => $text,
+            'url'      => $url,
+            'text'     => $text,
             'markdown' => $line,
-            'html' => rtrim(strip_tags(Markdown::defaultTransform($line), '<a>')),
-            'indices' => [$position, ($position+strlen($text))],
+            'html'     => rtrim(strip_tags(Markdown::defaultTransform($line), '<a>')),
+            'indices'  => [$position, ($position+strlen($text))],
         ];
     }
 

@@ -85,4 +85,39 @@ EXPECTED;
 
         $this->assertEquals($expected, $json->text);
     }
+
+    public function test_links()
+    {
+        $input = <<<LINKS
+[Holy Gun](http://holy-g.un)
+
+Another Text
+
+[Turn](http://to.the.rain)
+LINKS;
+
+        $expected = <<<EXPECTED
+Holy Gun
+
+Another Text
+
+Turn
+EXPECTED;
+
+        $json = $this->editor->content($input)->toJson();
+
+        $this->assertEquals($expected, $json->text);
+
+        $link = $json->embeds->links[0];
+        $this->assertEquals('Holy Gun', $link->text);
+        $this->assertEquals('http://holy-g.un', $link->url);
+        $this->assertEquals('[Holy Gun](http://holy-g.un)', $link->markdown);
+        $this->assertEquals('<a href="http://holy-g.un">Holy Gun</a>', $link->html);
+
+        $link_2 = $json->embeds->links[1];
+        $this->assertEquals('Turn', $link_2->text);
+        $this->assertEquals('http://to.the.rain', $link_2->url);
+        $this->assertEquals('[Turn](http://to.the.rain)', $link_2->markdown);
+        $this->assertEquals('<a href="http://to.the.rain">Turn</a>', $link_2->html);
+    }
 }
