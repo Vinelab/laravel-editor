@@ -19,7 +19,11 @@ class LinkTransformer extends AbstractTransformer {
         list($lines, $texts, $urls, $tooltips) = $matches;
         $matches_count = sizeof($lines);
 
+        // let's start by setting the default markdown text as transformed.
+        $instance->setTransformed($markdown);
+
         if ($matches_count > 0) {
+            // We will only update in case we find matches.
             $replace = [];
             for ($i = 0; $i < $matches_count; $i++) {
                 $line = $lines[$i];
