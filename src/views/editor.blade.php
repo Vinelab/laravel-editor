@@ -16,7 +16,7 @@ $(function(){
         [{
             name: "groupCustom",
             data: [{
-                toggle: true, // this param only take effect if you load bootstrap.js
+                toggle: false,
                 name: "cmdUploadPhoto",
                 title: "Upload Photo",
                 icon: "glyphicon glyphicon-camera",
