@@ -1,5 +1,7 @@
 <?php namespace Vinelab\Editor\Content;
 
+use Michelf\Markdown;
+
 /**
  * @author Abed Halawi <abed.halawi@vinelab.com>
  */
@@ -15,7 +17,8 @@ class Link extends AbstractContent {
         return [
             'url' => $url,
             'text' => $text,
-            'html' => $line,
+            'markdown' => $line,
+            'html' => rtrim(strip_tags(Markdown::defaultTransform($line), '<a>')),
             'indices' => [$position, ($position+strlen($text))],
         ];
     }
