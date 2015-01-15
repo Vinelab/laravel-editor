@@ -8,9 +8,4 @@ class HTMLTransformer extends AbstractTransformer {
 
         return $transformed;
     }
-
-    public static function makeWithAllowedTags()
-    {
-
-    }
 }
