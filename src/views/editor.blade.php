@@ -59,6 +59,8 @@ $(function(){
         $('#laravel-editor-uploads-container').prepend(image);
     });
 
+    $("#vinelab-editor-textarea").val("{{$content}}")
+
 });
 </script>
 

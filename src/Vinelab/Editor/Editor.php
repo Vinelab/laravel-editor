@@ -20,7 +20,7 @@ class Editor {
      */
     public function view($content = null)
     {
-        return View::make('vinelab.editor::editor')->render();
+        return View::make('vinelab.editor::editor')->with(compact('content'))->render();
     }
 
     /**
