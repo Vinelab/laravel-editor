@@ -18,9 +18,9 @@ class Facebook extends AbstractContent {
         $lines = $this->lines($html);
 
         return [
-            'url' => $this->url($line),
+            'url'  => $this->url($line),
             'html' => $line,
-            'line' => array_search($line, $lines),
+            'line' => array_search(trim($line), $lines),
         ];
     }
 

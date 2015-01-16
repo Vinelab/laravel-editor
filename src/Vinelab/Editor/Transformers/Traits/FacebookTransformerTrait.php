@@ -11,9 +11,11 @@ trait FacebookTransformerTrait {
     {
         $facebook = $this->makeFacebookTransformation($html);
         $this->setFacebookContent($facebook);
-        $this->setTransformedContent($facebook->transformed());
 
-        return $facebook->transformed();
+        $transformed = $facebook->transformed();
+        $this->setTransformedContent($transformed);
+
+        return $transformed;
     }
 
     public function makeFacebookTransformation($html)
