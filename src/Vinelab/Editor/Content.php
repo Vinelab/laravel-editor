@@ -7,6 +7,7 @@ use Vinelab\Editor\Transformers\Traits\HTMLTransformerTrait;
 use Vinelab\Editor\Transformers\Traits\TwitterTransformerTrait;
 use Vinelab\Editor\Transformers\Traits\YoutubeTransformerTrait;
 use Vinelab\Editor\Transformers\Traits\FacebookTransformerTrait;
+use Vinelab\Editor\Transformers\Traits\InstagramTransformerTrait;
 use Vinelab\Editor\Transformers\Traits\JavascriptTransformerTrait;
 
 /**
@@ -20,6 +21,7 @@ class Content {
     use TwitterTransformerTrait;
     use YoutubeTransformerTrait;
     use FacebookTransformerTrait;
+    use InstagramTransformerTrait;
     use JavascriptTransformerTrait;
 
     /**
@@ -56,6 +58,7 @@ class Content {
         $transformed = $this->transformFacebook($markdown);
         $transformed = $this->transformTwitter($markdown);
         $transformed = $this->transformYoutube($markdown);
+        $transformed = $this->transformInstagram($markdown);
         $transformed = $this->transformLinks($transformed);
         // N.B. Keep HTML transformation till last in case the previous
         // transformations deal with html since all the tags will be stripped at this point.
@@ -101,6 +104,7 @@ class Content {
             'embeds' => [
                 'facebook' => $this->facebook()->toArray(),
                 'twitter'  => $this->twitter()->toArray(),
+                'instagram' => $this->instagram()->toArray(),
                 'youtube'  => $this->youtube()->toArray(),
                 'links'    => $this->links()->toArray(),
             ]
