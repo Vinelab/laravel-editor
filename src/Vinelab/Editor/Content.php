@@ -7,6 +7,7 @@ use Vinelab\Editor\Transformers\Traits\HTMLTransformerTrait;
 use Vinelab\Editor\Transformers\Traits\TwitterTransformerTrait;
 use Vinelab\Editor\Transformers\Traits\YoutubeTransformerTrait;
 use Vinelab\Editor\Transformers\Traits\FacebookTransformerTrait;
+use Vinelab\Editor\Transformers\Traits\JavascriptTransformerTrait;
 
 /**
  * @author Abed Halawi <abed.halawi@vinelab.com>
@@ -19,6 +20,7 @@ class Content {
     use TwitterTransformerTrait;
     use YoutubeTransformerTrait;
     use FacebookTransformerTrait;
+    use JavascriptTransformerTrait;
 
     /**
      * Hold the content text and embeds.
@@ -40,7 +42,11 @@ class Content {
     public function transform($markdown)
     {
         // Get the HTML representation of content
-        $html = Markdown::defaultTransform($markdown);
+        $html = Markdown::defaultTransform($this->stripUnwanted($markdown));
+
+        // Javascript is a BIG NO! We start by stripping them bcz they're not allowed.
+        $html = $this->transformJavascript($html);
+        $markdown = $this->transformJavascript($this->stripUnwanted($markdown));
 
         // Set the original content as HTML and Transformed initially.
         $this->setHTMLContent($html);
@@ -59,6 +65,22 @@ class Content {
     public function text()
     {
         return $this->transformed();
+    }
+
+    /**
+     * Remove all unwanted tags and content. This is not related to any specific
+     * service and better be done at the beginnig before performing any transformations
+     * on the text since it will make destructive changes to indices and line numbers.
+     *
+     * @param  string $content
+     *
+     * @return string
+     */
+    public function stripUnwanted($content)
+    {
+        $content = preg_replace('/<div id="fb-root">(.*?)<\/div>/is', '', $content);
+
+        return $content;
     }
 
     public function __toString()
