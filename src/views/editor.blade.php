@@ -6,8 +6,6 @@
 <script type="text/javascript" src="/packages/vinelab/laravel-editor/js/markdown.min.js"></script>
 
 <script type="text/javascript">
-$(function(){
-
     $("#vinelab-editor-textarea").markdown({
         savable:false,
         autofocus:false,
@@ -59,12 +57,46 @@ $(function(){
                         if (e.$isPreview) {
                             e.hidePreview();
                         } else {
+                            // go fullscreen
                             e.setFullscreen(true);
+                            // show preview
                             e.showPreview();
+                            // render embeds
                             FB.XFBML.parse();
                             twttr.widgets.load();
                             instgrm.Embeds.process();
-                            e.enableButtons(['cmdFullPreview']);
+                            // check text direction
+                            container = e.$editor.find('div[data-provider="markdown-preview"]');
+
+                            if (e.$isRTL) {
+                                container.css('direction', 'rtl');
+                            }
+                            // enable the buttons
+                            e.enableButtons(['cmdFullPreview', 'cmdRtl']);
+                        }
+                    }
+                }]
+            },
+            {
+                name: "groupCustom",
+                data: [{
+                    toggle: true,
+                    name: "cmdRtl",
+                    title: "Right to Left",
+                    icon: "",
+                    btnText: 'Ar',
+                    btnClass: 'btn btn-info btn-sm',
+                    callback: function(e){
+                        var container = e.$textarea;
+                            preview = e.$editor.find('div[data-provider="markdown-preview"]');
+                        if (e.$isRTL) {
+                            e.$isRTL = false;
+                            container.css({direction: 'ltr'});
+                            preview.css({direction: 'ltr'});
+                        } else {
+                            e.$isRTL = true;
+                            container.css({direction: 'rtl'});
+                            preview.css({direction: 'rtl'});
                         }
                     }
                 }]
@@ -100,8 +132,6 @@ $(function(){
     });
 
     $("#vinelab-editor-textarea").val("{{$content}}")
-
-});
 </script>
 
 <div id="laravel-editor-uploads-modal" class="modal fade laravel-editor-uploads-modal" role="dialog" aria-hidden="true" aria-labelledby="editorUploads">
