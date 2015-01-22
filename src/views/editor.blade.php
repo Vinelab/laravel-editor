@@ -4,6 +4,7 @@
 
 <script type="text/javascript" src="/packages/vinelab/laravel-editor/js/bootstrap-markdown.js"></script>
 <script type="text/javascript" src="/packages/vinelab/laravel-editor/js/markdown.min.js"></script>
+
 <script type="text/javascript">
 $(function(){
 
@@ -11,25 +12,64 @@ $(function(){
         savable:false,
         autofocus:false,
         iconLibrary: 'fa',
-        hiddenButtons: ['cmdCode', 'cmdList', 'cmdListO', 'cmdHeading', 'cmdQuote'],
+        hiddenButtons: ['cmdCode', 'cmdList', 'cmdListO', 'cmdHeading', 'cmdQuote', 'cmdPreview'],
+        onPreview: function (e) {
+
+            // transform content into Markdown
+            html = markdown.toHTML(e.getContent());
+            // encode html entities
+            text = html.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/<script\b[^>]*>(.*?)<\/script>/ig, '');
+            // decode everything (including the ones that were encoded by the markdown transformer)
+            decoded = $('<div/>').html(text).text();
+            // remove script tags and everything between them
+            content = decoded.replace(/<script([^'"]|"[^"]*"|'[^']*')*?<\/script>/g, '');
+
+            return content;
+        },
         additionalButtons: [
-        [{
-            name: "groupCustom",
-            data: [{
-                toggle: false,
-                name: "cmdUploadPhoto",
-                title: "Upload Photo",
-                icon: "glyphicon glyphicon-camera",
-                callback: function(e){
-                    // globalize the event to grant access to the editor
-                    window.lePhotoUploadEvent = e;
-                    // if the editor is in fullscreen we need to close it
-                    $('a.exit-fullscreen').first().click();
-                    // now we show the modal so that they choose a photo
-                    $("#laravel-editor-uploads-modal").modal('show');
-                }
-            }]
-        }]
+        [
+            {
+                name: "groupCustom",
+                data: [{
+                    toggle: false,
+                    name: "cmdUploadPhoto",
+                    title: "Upload Photo",
+                    icon: "glyphicon glyphicon-camera",
+                    callback: function(e){
+                        // globalize the event to grant access to the editor
+                        window.lePhotoUploadEvent = e;
+                        // if the editor is in fullscreen we need to close it
+                        $('a.exit-fullscreen').first().click();
+                        // now we show the modal so that they choose a photo
+                        $("#laravel-editor-uploads-modal").modal('show');
+                    }
+                }]
+            },
+            {
+                name: "groupCustom",
+                data: [{
+                    toggle: true,
+                    name: "cmdFullPreview",
+                    title: "Show Preview",
+                    icon: "glyphicon glyphicon-search",
+                    hotkey: 'Ctrl+P',
+                    btnText: 'Preview',
+                    btnClass: 'btn btn-primary btn-sm',
+                    callback: function(e){
+                        if (e.$isPreview) {
+                            e.hidePreview();
+                        } else {
+                            e.setFullscreen(true);
+                            e.showPreview();
+                            FB.XFBML.parse();
+                            twttr.widgets.load();
+                            instgrm.Embeds.process();
+                            e.enableButtons(['cmdFullPreview']);
+                        }
+                    }
+                }]
+            }
+        ]
       ]
     });
 

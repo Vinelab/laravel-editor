@@ -25,6 +25,42 @@ and transforms content into a clean JSON to be delivered to mobile devices or cu
 
 - Access the editor with the `Editor` facade
 
+## Dependencies
+
+- [jQuery](http://jquery.com)
+    - `<script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>`
+- [Bootstrap](http://getbootstrap.com)
+    - `<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>`
+    - `<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">`
+- To have all the embeds working in preview you will need to add the social media scripts as well:
+    - Facebook
+```javascript
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '[YOU APP ID HERE]',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+```
+    - Twitter
+```javascript
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+    - Instagram
+```javascript
+<script async src="//platform.instagram.com/en_US/embeds.js"></script>
+```
 
 ## Usage
 
