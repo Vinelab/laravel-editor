@@ -32,6 +32,9 @@ and transforms content into a clean JSON to be delivered to mobile devices or cu
 - [Bootstrap](http://getbootstrap.com)
     - `<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>`
     - `<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">`
+
+- [Mr.Uploader](http://github.com/vinelab/mr-uploader): To have the photo cropping and upload working you need to add
+
 - To have all the embeds working in preview you will need to add the social media scripts as well:
     - Facebook
 ```javascript
