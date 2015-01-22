@@ -12,7 +12,7 @@ $(function(){
         savable:false,
         autofocus:false,
         iconLibrary: 'fa',
-        hiddenButtons: ['cmdCode', 'cmdList', 'cmdListO', 'cmdHeading', 'cmdQuote', 'cmdPreview'],
+        hiddenButtons: ['cmdCode', 'cmdList', 'cmdListO', 'cmdHeading', 'cmdQuote', 'cmdPreview', 'cmdImage'],
         onPreview: function (e) {
 
             // transform content into Markdown
