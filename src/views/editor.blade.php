@@ -54,6 +54,7 @@
                     btnText: 'Preview',
                     btnClass: 'btn btn-primary btn-sm',
                     callback: function(e){
+                        // e stands for editor
                         if (e.$isPreview) {
                             e.hidePreview();
                         } else {
@@ -62,15 +63,25 @@
                             // show preview
                             e.showPreview();
                             // render embeds
-                            FB.XFBML.parse();
-                            twttr.widgets.load();
-                            instgrm.Embeds.process();
+                            if (typeof FB == 'object') {
+                                FB.XFBML.parse();
+                            }
+
+                            if (typeof twttr == 'object') {
+                                twttr.widgets.load();
+                            }
+
+                            if (typeof instgrm == 'object') {
+                                instgrm.Embeds.process();
+                            }
+
                             // check text direction
                             container = e.$editor.find('div[data-provider="markdown-preview"]');
 
                             if (e.$isRTL) {
                                 container.css('direction', 'rtl');
                             }
+
                             // enable the buttons
                             e.enableButtons(['cmdFullPreview', 'cmdRtl']);
                         }
