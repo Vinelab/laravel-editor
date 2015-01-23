@@ -35,9 +35,12 @@ and transforms content into a clean JSON to be delivered to mobile devices or cu
 
 - [Mr.Uploader](http://github.com/vinelab/mr-uploader): To have the photo cropping and upload working you need to add
 
-- To have all the embeds working in preview you will need to add the social media scripts as well:
-    - Facebook
-```javascript
+### Social Media Embeds
+To have all the embeds working in the preview you will need to add the social media scripts to your HTML.
+
+#### Facebook
+
+```html
 <script>
     window.fbAsyncInit = function() {
         FB.init({
@@ -56,12 +59,16 @@ and transforms content into a clean JSON to be delivered to mobile devices or cu
     }(document, 'script', 'facebook-jssdk'));
 </script>
 ```
-    - Twitter
-```javascript
+
+#### Twitter
+
+```html
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
-    - Instagram
-```javascript
+
+#### Instagram
+
+```html
 <script async src="//platform.instagram.com/en_US/embeds.js"></script>
 ```
 
