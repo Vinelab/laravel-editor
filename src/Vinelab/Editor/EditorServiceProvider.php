@@ -22,10 +22,6 @@ class EditorServiceProvider extends ServiceProvider {
         $this->loadViewsFrom(__DIR__.'/../../views/', 'laravel-editor');
 
         $this->publishes([
-            __DIR__.'/../../config/youtube.php' => config_path('youtube.php')
-        ]);
-
-        $this->publishes([
             __DIR__.'/../../views/' => base_path('resources/views/vendor/laravel-editor'),
         ]);
 
