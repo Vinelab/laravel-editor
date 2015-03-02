@@ -19,7 +19,7 @@ class EditorServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('vinelab/editor', 'vinelab.editor');
+
 	}
 
 	/**
