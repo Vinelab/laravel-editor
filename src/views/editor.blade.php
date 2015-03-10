@@ -142,7 +142,7 @@
         $('#laravel-editor-uploads-container').prepend(image);
     });
 
-    $("#vinelab-editor-textarea").val("{{addslashes($content)}}")
+    $("#vinelab-editor-textarea").val("{{Editor::format($content)}}");
 </script>
 
 <div id="laravel-editor-uploads-modal" class="modal fade laravel-editor-uploads-modal" role="dialog" aria-hidden="true" aria-labelledby="editorUploads">
