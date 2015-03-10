@@ -47,8 +47,21 @@ class Editor {
         return $this->content($content)->toJson();
     }
 
+    /**
+     * @return string
+     */
     public function input()
     {
         return self::INPUT;
+    }
+
+    /**
+     * @param $content
+     *
+     * @return mixed
+     */
+    public function format($content)
+    {
+        return str_replace(array("\n", "\r"), array("\\n", "\\r"), addslashes($content));
     }
 }
