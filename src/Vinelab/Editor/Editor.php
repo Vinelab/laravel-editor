@@ -20,6 +20,10 @@ class Editor {
      */
     public function view($content = null)
     {
+        if ($content) {
+            $content = Content::make($content)->html();
+        }
+
         return view('vendor/laravel-editor/editor')->with(compact('content'))->render();
     }
 
