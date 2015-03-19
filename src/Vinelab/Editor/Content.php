@@ -31,6 +31,14 @@ class Content {
      */
     protected $content = [];
 
+    /**
+     * The original content as entered in the editor,
+     * passed through a bit of filtering.
+     *
+     * @var string
+     */
+    protected $original = '';
+
     public function __construct($html)
     {
         $this->transform($html);
@@ -49,6 +57,8 @@ class Content {
         // Javascript is a BIG NO! We start by stripping them bcz they're not allowed.
         $html = $this->transformJavascript($html);
         $markdown = $this->transformJavascript($this->stripUnwanted($markdown));
+
+        $this->setOriginalContent($markdown);
 
         // Set the original content as HTML and Transformed initially.
         $this->setHTMLContent($html);
@@ -110,5 +120,26 @@ class Content {
             ]
         ];
         return (array) $this->content;
+    }
+
+    /**
+     * Get the original markdown representation
+     * of the content.
+     *
+     * @return string
+     */
+    public function markdown()
+    {
+        return $this->original;
+    }
+
+    /**
+     * Set the original content.
+     *
+     * @param string $content
+     */
+    protected function setOriginalContent($content)
+    {
+        $this->original = $content;
     }
 }
