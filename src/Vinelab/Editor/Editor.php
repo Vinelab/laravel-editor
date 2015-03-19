@@ -21,7 +21,7 @@ class Editor {
     public function view($content = null)
     {
         if ($content) {
-            $content = Content::make($content)->html();
+            $content = Content::make($content)->markdown();
         }
 
         return view('vendor/laravel-editor/editor')->with(compact('content'))->render();
