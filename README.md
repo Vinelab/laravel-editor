@@ -76,7 +76,15 @@ To have all the embeds working in the preview you will need to add the social me
 
 ### Displaying the Editor
 
-To display the editor you simply need to call `Editor::view()`
+To display the editor you simply need to call
+```php
+Editor::view()
+```
+
+You may also call it passing existing content
+```php
+Editor::view($text);
+```
 
 #### Example with a Form
 
