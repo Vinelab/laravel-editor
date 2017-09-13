@@ -25,4 +25,11 @@
         }
     },
     "minimum-stability": "stable"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vinelab\\Editor\\EditorServiceProvider"
+            ]
+        }
+    }
 }
